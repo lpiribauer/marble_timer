@@ -1,0 +1,4 @@
+.idea/*
+*.webm
+venv/*
+__pycache__/*

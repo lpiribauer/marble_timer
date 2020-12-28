@@ -1,0 +1,20 @@
+    <tr>
+        <td>Position</td>
+        <td>Farbe</td>
+        <td>Runde</td>
+        <td>Letzte Runde</td>
+        <td>Beste Runde</td>
+        <td>Gesamt</td>
+        <td>Differenz</td>
+    </tr>
+    {% for marble in marbles %}
+        <tr class="table-entry ">
+            <td style="width: 30px">{{ loop.index }}</td>
+            <td style="width: 30px"><div class="color-cell" style="background-color: rgb({{ marble.display_color[1]}}, {{ marble.display_color[2]}}, {{ marble.display_color[0]}})"</td>
+            <td>{{ marble.get_number_of_laps() }}</td>
+            <td>{{ "{:.2f}".format(marble.get_last_lap_time()) }}</td>
+            <td>{{ "{:.2f}".format(marble.get_best_lap_time()) }}</td>
+            <td>{{ "{:.2f}".format(marble.get_overall_time()) }}</td>
+            <td>{{ "{:.2f}".format(marble.get_overall_time() - time_first) }}</td>
+        </tr>
+    {% endfor %}
