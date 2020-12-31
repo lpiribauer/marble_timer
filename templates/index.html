@@ -61,8 +61,8 @@
 
     var secondsMutator = function(value, data, type, params, component){
         //change age value into boolean, true if over the provided legal age
-        if(value === 100000 || value === -1){
-            return new Date(0).toISOString().substr(14, 8)
+        if(value === 100000 || value === -1 || value === 0){
+            return ("--")
         }
         else if(typeof value === 'string' || value instanceof String){
             return value
@@ -70,6 +70,33 @@
         if (value !== undefined){
             return new Date(value * 1000).toISOString().substr(14, 8)
         }
+    }
+
+    var  best_lap_formatter = function(cell){
+        var value = cell.getValue();
+
+        //do anything you want here
+        if(cell.getData().has_best_lap){
+            $(cell.getElement()).css({"background":"#C463B6"});
+        }
+        else{
+             $(cell.getElement()).css({"color":"red"});
+        }
+
+        //return the original value of the cell
+        return value;
+    }
+
+    var difference_formatter = function(cell){
+        var value = cell.getValue();
+
+        //do anything you want here
+        if(cell.getData().position !== 1){
+            $(cell.getElement()).css({"color":"red"});
+        }
+
+        //return the original value of the cell
+        return value;
     }
 
 
@@ -90,9 +117,9 @@
                 {title:"Name", field: "name", editor: "input"},
                 {title:"Runde", field:"laps"},
                 {title:"Letzte Rundenzeit", field:"last_lap_time", mutator: secondsMutator},
-                {title:"Beste Rundenzeit", field:"best_lap_time" , mutator: secondsMutator},
+                {title:"Beste Rundenzeit", field:"best_lap_time" , formatter: best_lap_formatter, mutator: secondsMutator},
                 {title:"Gesamtzeit", field:"overall_time" , mutator: secondsMutator},
-                {title:"Differenz", field:"difference", mutator: secondsMutator},
+                {title:"Differenz", field:"difference", formatter: difference_formatter, mutator: secondsMutator},
 
             ],
             cellEdited: function (cell) {
