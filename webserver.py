@@ -138,12 +138,12 @@ def change_name(data):
 
 
 marble = Marble(1, (123,45,23))
-marble.lap_times.append(162.1234)
-marble.lap_times.append(85.71789240837097)
+marble.lap_times.append(25.1234)
+marble.lap_times.append(51.71789240837097)
 
 marble2 = Marble(2, (0,255,0))
-marble2.lap_times.append(162.1234)
-marble2.lap_times.append(89.90212)
+marble2.lap_times.append(26.1234)
+marble2.lap_times.append(50.90212)
 
 marbles.append(marble)
 marbles.append(marble2)
